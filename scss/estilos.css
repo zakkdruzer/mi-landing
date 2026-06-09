@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #020612;
+  color: #e4f2e3;
+}
+
 main {
   padding-top: 4.5rem;
 }
@@ -7,8 +14,8 @@ main {
   top: 0;
   z-index: 100;
   backdrop-filter: blur(18px);
-  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  background: linear-gradient(to bottom, rgba(2, 6, 18, 0.96), rgba(2, 6, 18, 0.8));
+  border-bottom: 1px solid rgba(159, 179, 170, 0.25);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,7 +27,7 @@ main {
   font-weight: 700;
   letter-spacing: 0.03em;
   font-size: 1.1rem;
-  color: rgb(133, 133, 133);
+  color: #e4f2e3;
 }
 .nav__menu {
   list-style: none;
@@ -31,7 +38,7 @@ main {
 }
 .nav__enlace {
   font-size: 0.95rem;
-  color: rgb(156, 163, 175);
+  color: #9fb3aa;
   position: relative;
   padding-block: 0.25rem;
 }
@@ -43,11 +50,11 @@ main {
   width: 0;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgb(34, 197, 94), rgb(56, 189, 248));
+  background: linear-gradient(90deg, #4a7c6d, #c8573e);
   transition: width 180ms ease;
 }
 .nav__enlace:hover {
-  color: rgb(133, 133, 133);
+  color: #e4f2e3;
 }
 .nav__enlace:hover::after {
   width: 100%;
@@ -55,7 +62,7 @@ main {
 .nav__cta {
   font-size: 0.9rem;
   padding-inline: 1.4rem;
-  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.25);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
 }
 @media (max-width: 768px) {
   .nav__cta {
@@ -63,22 +70,102 @@ main {
   }
 }
 
+.hero {
+  padding-block: 3rem;
+  padding-inline: 1.5rem;
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+.hero__contenido {
+  max-width: 540px;
+}
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  background-color: rgba(74, 124, 109, 0.18);
+  color: #4a7c6d;
+}
+.hero__titulo {
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: #e4f2e3;
+}
+.hero__subtitulo {
+  color: #9fb3aa;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hero__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.hero__nota {
+  font-size: 0.85rem;
+  color: #9fb3aa;
+}
+.hero__visual {
+  min-height: 260px;
+  border-radius: 1rem;
+  border: 1px solid rgba(159, 179, 170, 0.3);
+  background: radial-gradient(circle at top left, rgba(74, 124, 109, 0.3), transparent), radial-gradient(circle at bottom right, rgba(200, 87, 62, 0.25), transparent), linear-gradient(145deg, #020612, #07141b);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+.hero__visual::before {
+  content: "REC";
+  position: absolute;
+  top: 0.8rem;
+  left: 0.9rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: #c8573e;
+}
+.hero__visual::after {
+  content: "00:00:24";
+  position: absolute;
+  top: 0.8rem;
+  right: 0.9rem;
+  font-size: 0.75rem;
+  color: #9fb3aa;
+}
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero__visual {
+    order: -1;
+  }
+}
+
 .features {
   padding-block: 3rem;
-  border-top: 1px solid rgba(148, 163, 184, 0.18);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent), radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.08), transparent);
+  border-top: 1px solid rgba(159, 179, 170, 0.18);
+  border-bottom: 1px solid rgba(159, 179, 170, 0.18);
+  background: radial-gradient(circle at top left, rgba(74, 124, 109, 0.25), transparent), radial-gradient(circle at bottom right, rgba(200, 87, 62, 0.15), transparent);
 }
 .features__titulo {
   font-family: "Poppins", system-ui, -apple-system, sans-serif;
   font-size: 1.6rem;
   text-align: center;
   margin-bottom: 0.4rem;
-  color: rgb(133, 133, 133);
+  color: #e4f2e3;
 }
 .features__subtitulo {
   text-align: center;
-  color: rgb(156, 163, 175);
+  color: #9fb3aa;
   margin-bottom: 1.5rem;
 }
 .features__grid {
@@ -88,11 +175,11 @@ main {
 }
 
 .feature {
-  background-color: rgb(11, 18, 32);
+  background-color: #07141b;
   border-radius: 1rem;
   padding: 1.5rem;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(159, 179, 170, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -108,21 +195,21 @@ main {
   justify-content: center;
   font-size: 0.9rem;
   font-weight: 600;
-  background: rgba(34, 197, 94, 0.12);
-  color: rgb(34, 197, 94);
+  background: rgba(74, 124, 109, 0.18);
+  color: #4a7c6d;
 }
 .feature__titulo {
   font-size: 1.05rem;
   font-weight: 600;
-  color: rgb(133, 133, 133);
+  color: #e4f2e3;
 }
 .feature__texto {
-  color: rgb(156, 163, 175);
+  color: #9fb3aa;
   font-size: 0.95rem;
 }
 .feature:hover {
-  border-color: rgb(34, 197, 94);
+  border-color: #4a7c6d;
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
   transition: all 150ms ease;
 }/*# sourceMappingURL=estilos.css.map */
