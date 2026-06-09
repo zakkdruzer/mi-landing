@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusFlow - Landing</title>
+
+  <!-- Aqui enlazas el CSS que generes al compilar tu Sass.
+       NO escribas estilos en este archivo: todo va en scss/estilos.scss -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ============ NAVEGACION ============ -->
+  <header class="nav">
+    <a href="#inicio" class="nav__logo">FocusFlow</a>
+    <ul class="nav__menu">
+      <li class="nav__item"><a href="#features" class="nav__enlace">Funciones</a></li>
+      <li class="nav__item"><a href="#precios" class="nav__enlace">Precios</a></li>
+      <li class="nav__item"><a href="#opiniones" class="nav__enlace">Opiniones</a></li>
+    </ul>
+    <a href="#precios" class="boton boton--primario nav__cta">Probar gratis</a>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__contenido">
+        <span class="hero__badge">Nuevo - v2.0</span>
+        <h1 class="hero__titulo">Organiza tu dia, sin estres</h1>
+        <p class="hero__subtitulo">
+          FocusFlow reune tus tareas, notas y calendario en un solo lugar
+          para que rindas mas trabajando menos.
+        </p>
+        <div class="hero__acciones">
+          <a href="#precios" class="boton boton--primario">Empezar ahora</a>
+          <a href="#features" class="boton boton--secundario">Ver funciones</a>
+        </div>
+        <p class="hero__nota">Sin tarjeta de credito - Cancela cuando quieras</p>
+      </div>
+      <div class="hero__visual"><!-- aqui puede ir una imagen / mockup --></div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="features" id="features">
+      <h2 class="features__titulo">Todo lo que necesitas</h2>
+      <p class="features__subtitulo">Herramientas simples que se adaptan a tu ritmo.</p>
+      <div class="features__grid">
+
+        <article class="feature">
+          <div class="feature__icono">1</div>
+          <h3 class="feature__titulo">Tareas inteligentes</h3>
+          <p class="feature__texto">Prioriza automaticamente lo importante y olvida el caos.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icono">2</div>
+          <h3 class="feature__titulo">Notas conectadas</h3>
+          <p class="feature__texto">Enlaza ideas y tareas para no perder el contexto nunca.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature__icono">3</div>
+          <h3 class="feature__titulo">Calendario unificado</h3>
+          <p class="feature__texto">Visualiza tu semana completa de un vistazo.</p>
+        </article>
+
+        <!-- ZONA DE PERSONALIZACION:
+             agrega AL MENOS una feature propia (la cuarta).
+             Copia la estructura de arriba y pon tu idea. -->
+
+      </div>
+    </section>
+
+    <!-- ============ PRECIOS ============ -->
+    <section class="precios" id="precios">
+      <h2 class="precios__titulo">Planes para cada equipo</h2>
+      <div class="precios__grid">
+
+        <article class="plan">
+          <h3 class="plan__nombre">Free</h3>
+          <p class="plan__precio">$0<span class="plan__periodo">/mes</span></p>
+          <ul class="plan__lista">
+            <li class="plan__item">Hasta 3 proyectos</li>
+            <li class="plan__item">Tareas ilimitadas</li>
+            <li class="plan__item">App movil</li>
+          </ul>
+          <a href="#" class="boton boton--secundario plan__boton">Empezar</a>
+        </article>
+
+        <article class="plan plan--destacado">
+          <span class="plan__etiqueta">Mas popular</span>
+          <h3 class="plan__nombre">Pro</h3>
+          <p class="plan__precio">$9<span class="plan__periodo">/mes</span></p>
+          <ul class="plan__lista">
+            <li class="plan__item">Proyectos ilimitados</li>
+            <li class="plan__item">Notas conectadas</li>
+            <li class="plan__item">Integraciones</li>
+          </ul>
+          <a href="#" class="boton boton--primario plan__boton">Probar Pro</a>
+        </article>
+
+        <article class="plan">
+          <h3 class="plan__nombre">Team</h3>
+          <p class="plan__precio">$19<span class="plan__periodo">/mes</span></p>
+          <ul class="plan__lista">
+            <li class="plan__item">Todo lo de Pro</li>
+            <li class="plan__item">Espacios de equipo</li>
+            <li class="plan__item">Soporte prioritario</li>
+          </ul>
+          <a href="#" class="boton boton--secundario plan__boton">Contactar</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ OPINIONES ============ -->
+    <section class="opiniones" id="opiniones">
+      <h2 class="opiniones__titulo">Lo que dicen nuestros usuarios</h2>
+      <div class="opiniones__grid">
+
+        <blockquote class="testimonio">
+          <p class="testimonio__texto">"Desde que uso FocusFlow recupere 2 horas al dia."</p>
+          <footer class="testimonio__autor">Ana, disenadora</footer>
+        </blockquote>
+
+        <blockquote class="testimonio">
+          <p class="testimonio__texto">"Por fin una app que no me complica la vida."</p>
+          <footer class="testimonio__autor">Luis, freelance</footer>
+        </blockquote>
+
+      </div>
+    </section>
+
+    <!-- ============ LLAMADO A LA ACCION ============ -->
+    <section class="cta">
+      <h2 class="cta__titulo">Empieza a fluir hoy</h2>
+      <p class="cta__texto">Unete a miles de personas que ya organizan mejor su tiempo.</p>
+      <a href="#" class="boton boton--primario cta__boton">Crear cuenta gratis</a>
+    </section>
+
+    <!-- ZONA DE PERSONALIZACION:
+         agrega UNA seccion nueva inventada por ti
+         (ej: "Preguntas frecuentes", "Estadisticas", "Integraciones", "Descarga la app").
+         Inventa sus clases y luego estilizala con Sass. -->
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4 class="footer__titulo">FocusFlow</h4>
+        <a href="#" class="footer__enlace">Sobre nosotros</a>
+        <a href="#" class="footer__enlace">Blog</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__titulo">Producto</h4>
+        <a href="#" class="footer__enlace">Funciones</a>
+        <a href="#" class="footer__enlace">Precios</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__titulo">Contacto</h4>
+        <a href="#" class="footer__enlace">Soporte</a>
+        <a href="#" class="footer__enlace">Email</a>
+      </div>
+    </div>
+    <p class="footer__copy">© 2026 FocusFlow - Hecho con Sass.</p>
+  </footer>
+
+</body>
+</html>
