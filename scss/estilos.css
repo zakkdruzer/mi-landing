@@ -134,18 +134,20 @@ main {
 .hero__hud {
   position: absolute;
   top: 0.8rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  z-index: 2;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+  z-index: 3;
 }
 .hero__hud--rec {
   left: 0.9rem;
-  color: #c8573e;
+  color: #ff4d4d;
 }
 .hero__hud--time {
   right: 0.9rem;
-  color: #9fb3aa;
+  color: #ffffff;
 }
 .hero__visual::after {
   content: "";

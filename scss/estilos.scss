@@ -99,11 +99,6 @@ main {
     padding: 0;
   }
 
-  // Cada item de la lista (hook para futuro estado activo)
-  &__item {
-    // aquí podrías marcar el enlace actual en el futuro
-  }
-
   // Enlaces de navegación
   &__enlace {
     font-size: 0.95rem;
@@ -233,20 +228,22 @@ main {
   &__hud {
     position: absolute;
     top: 0.8rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    font-size: 0.85rem;          // un poco más grande
+    letter-spacing: 0.14em;      // más separación = más legible
     text-transform: uppercase;
-    z-index: 2;
+    font-weight: 600;            // más grosor
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9); // halo oscuro para separarlo del fondo
+    z-index: 3;                  // por encima del ruido
   }
 
   &__hud--rec {
     left: 0.9rem;
-    color: $ff-color-accent;
+    color: #ff4d4d;              // rojo más vivo tipo indicador REC
   }
 
   &__hud--time {
     right: 0.9rem;
-    color: $ff-color-muted;
+    color: #ffffff;              // blanco puro para máximo contraste
   }
 
   // Capa de ruido tipo VHS (líneas horizontales animadas)
