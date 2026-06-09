@@ -27,6 +27,11 @@ $ff-color-accent: rgb(56, 189, 248);
 // Sombra suave reutilizable
 $ff-shadow-soft: 0 4px 14px rgba(34, 197, 94, 0.25);
 
+// Ajuste para que el contenido no quede debajo de la nav
+main {
+  padding-top: 4.5rem; // ajusta este valor según la altura real de tu nav
+}
+
 // =========================
 // BARRA DE NAVEGACIÓN
 // =========================
