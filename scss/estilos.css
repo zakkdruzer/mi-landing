@@ -1,1 +1,62 @@
-/*# sourceMappingURL=estilos.css.map */
+.features {
+  padding-block: 3rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent), radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.08), transparent);
+}
+.features__titulo {
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 0.4rem;
+  color: #f9fafb;
+}
+.features__subtitulo {
+  text-align: center;
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature {
+  background-color: #0b1220;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.feature__icono {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}
+.feature__titulo {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.feature__texto {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+.feature:hover {
+  border-color: #22c55e;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+  transition: all 150ms ease;
+}/*# sourceMappingURL=estilos.css.map */
