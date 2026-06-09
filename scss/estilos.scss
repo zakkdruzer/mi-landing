@@ -1,85 +1,126 @@
+// =========================
+// VARIABLES BÁSICAS DE TEMA
+// =========================
+
+// Espaciados reutilizables
 $ff-space-lg: 3rem;
 $ff-space-md: 1.5rem;
 $ff-space-sm: 0.75rem;
-$ff-color-muted: #9ca3af;
-$ff-color-surface-alt: #0b1220;
-$ff-radius-md: 1rem;
-$ff-color-primary: #22c55e;
-$ff-color-primary-soft: rgba(34, 197, 94, 0.12);
-// Tipografía
-$ff-font-heading: "Poppins", system-ui, -apple-system, sans-serif;
-// Radius extra
-$ff-radius-full: 999px;
 
-// ===== Sección Features =====
+// Colores base para tema oscuro
+$ff-color-text: rgb(133, 133, 133);          // texto principal (claro)
+$ff-color-muted: rgb(156, 163, 175);         // texto secundario (descripciones)
+$ff-color-surface-alt: rgb(11, 18, 32);   // fondo de tarjetas
+$ff-color-primary: rgb(34, 197, 94);       // color principal (brand)
+$ff-color-primary-soft: rgba(34, 197, 94, 0.12); // versión suave para fondos/acentos
+
+// Radios de borde
+$ff-radius-md: 1rem;              // tarjetas
+$ff-radius-full: 999px;           // pills / círculos
+
+// Tipografía de títulos
+$ff-font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+
+
+
+// =========================
+// SECCIÓN FEATURES (GRILLA)
+// =========================
+
+// Contenedor general de la sección de características
 .features {
+  // espacio vertical arriba/abajo usando variable
   padding-block: $ff-space-lg;
+
+  // líneas de separación para dividir visualmente secciones
   border-top: 1px solid rgba(148, 163, 184, 0.18);
   border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent),
-              radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.08), transparent);
 
+  // fondo con ligero degradado para dar profundidad en tema oscuro
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.08), transparent);
+
+  // Título principal de la sección: "Todo lo que necesitas"
   &__titulo {
     font-family: $ff-font-heading;
     font-size: 1.6rem;
     text-align: center;
     margin-bottom: 0.4rem;
-    color: #f9fafb; // texto casi blanco para máxima legibilidad
+    color: $ff-color-text; // aseguramos buen contraste en fondo oscuro
   }
 
+  // Subtítulo: "Herramientas simples..."
   &__subtitulo {
     text-align: center;
-    color: $ff-color-muted;  // puedes dejarlo así o subir el contraste
+    color: $ff-color-muted; // un poco más apagado que el título
     margin-bottom: $ff-space-md;
   }
 
+  // Grid que contiene las tarjetas .feature
   &__grid {
     display: grid;
+    // auto-fit + minmax → se adapta solo a mobile / desktop
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: $ff-space-md;
+    gap: $ff-space-md; // separación entre tarjetas
   }
 }
 
-// Tarjeta individual
+
+
+// =========================
+// TARJETA FEATURE INDIVIDUAL
+// =========================
+
+// Cada <article class="feature"> dentro de la grilla
 .feature {
-  background-color: $ff-color-surface-alt;
-  border-radius: $ff-radius-md;
-  padding: $ff-space-md;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6);
+  background-color: $ff-color-surface-alt; // fondo de tarjeta
+  border-radius: $ff-radius-md;            // esquinas redondeadas
+  padding: $ff-space-md;                   // espacio interno
+  border: 1px solid rgba(148, 163, 184, 0.25); // borde sutil
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6); // sombra para levantar la tarjeta
+
   display: flex;
   flex-direction: column;
-  gap: $ff-space-sm;
+  gap: $ff-space-sm;      // separación entre icono, título y texto
   position: relative;
   overflow: hidden;
 
+  // Icono / número circular (1, 2, 3, 4...)
   &__icono {
     width: 2rem;
     height: 2rem;
-    border-radius: $ff-radius-full;
+    border-radius: $ff-radius-full; // círculo perfecto
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     font-size: 0.9rem;
     font-weight: 600;
-    background: $ff-color-primary-soft;
-    color: $ff-color-primary;
+
+    background: $ff-color-primary-soft; // fondo suave del número
+    color: $ff-color-primary;          // número con color de marca
   }
 
+  // Título de cada feature: "Tareas inteligentes", etc.
   &__titulo {
     font-size: 1.05rem;
     font-weight: 600;
+    color: $ff-color-text; // texto claro para buen contraste
   }
 
+  // Descripción de cada feature
   &__texto {
-    color: $ff-color-muted;
+    color: $ff-color-muted; // tono más suave, para cuerpo del texto
     font-size: 0.95rem;
   }
 
+  // Estado hover de la tarjeta completa
   &:hover {
-    border-color: $ff-color-primary;
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+    border-color: $ff-color-primary; // resalta borde con color de marca
+    transform: translateY(-2px);     // leve “lift” hacia arriba
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9); // sombra más fuerte
     transition: all 150ms ease;
   }
 }
