@@ -8,19 +8,21 @@ $ff-space-md: 1.5rem;
 $ff-space-sm: 0.75rem;
 
 // Colores base para tema oscuro jurásico
-$ff-color-bg: #020612; // noche profunda (fondo general)
-$ff-color-text: #e4f2e3; // texto principal (verde muy suave)
-$ff-color-muted: #9fb3aa; // texto secundario (verdoso apagado)
-$ff-color-surface-alt: #07141b; // fondo de tarjetas/paneles
+$ff-color-bg: #020612; // fondo general (noche)
+$ff-color-text: #e4f2e3; // texto principal
+$ff-color-muted: #9fb3aa; // texto secundario
+$ff-color-surface: #0b1a21; // secciones
+$ff-color-surface-alt: #07141b; // tarjetas/paneles
 
 // Colores de marca / acentos
-$ff-color-primary: #4a7c6d; // verde musgo (color principal)
-$ff-color-primary-soft: rgba(74, 124, 109, 0.18); // versión suave para fondos
-$ff-color-accent: #c8573e; // naranja volcánico (acentos, hovers)
+$ff-color-primary: #4a7c6d; // verde musgo (marca)
+$ff-color-primary-soft: rgba(74, 124, 109, 0.18);
+$ff-color-accent: #c8573e; // naranja volcánico (acentos)
 
 // Radios de borde
-$ff-radius-md: 1rem; // tarjetas
-$ff-radius-full: 999px; // pills / círculos
+$ff-radius-sm: 0.5rem;
+$ff-radius-md: 1rem;
+$ff-radius-full: 999px;
 
 // Tipografía de títulos
 $ff-font-heading:
@@ -32,9 +34,22 @@ $ff-font-heading:
 // Sombra suave reutilizable
 $ff-shadow-soft: 0 4px 18px rgba(0, 0, 0, 0.6);
 
+// Ancho máximo de contenido
+$ff-max-width: 1120px;
+
 // =========================
-// BASE: BODY Y LAYOUT GLOBAL
+// BASE: BODY, TIPOGRAFÍA Y LAYOUT
 // =========================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -46,11 +61,73 @@ body {
     sans-serif;
   background-color: $ff-color-bg;
   color: $ff-color-text;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Contenedor reutilizable (si lo quieres usar luego)
+.container {
+  max-width: $ff-max-width;
+  margin-inline: auto;
+  padding-inline: $ff-space-md;
 }
 
 // Ajuste para que el contenido no quede debajo de la nav sticky
 main {
-  padding-top: 4.5rem; // ajusta este valor según la altura real de tu nav
+  padding-top: 4.5rem;
+}
+
+// =========================
+// BOTONES REUTILIZABLES
+// =========================
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: $ff-radius-full;
+  border: 1px solid transparent;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease;
+
+  &--primario {
+    background-color: $ff-color-primary;
+    color: #020617;
+    box-shadow: $ff-shadow-soft;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 24px 60px rgba(74, 124, 109, 0.7);
+    }
+  }
+
+  &--secundario {
+    background-color: transparent;
+    border-color: rgba(159, 179, 170, 0.7);
+    color: $ff-color-text;
+
+    &:hover {
+      border-color: $ff-color-primary;
+      background-color: $ff-color-primary-soft;
+    }
+  }
 }
 
 // =========================
@@ -58,12 +135,10 @@ main {
 // =========================
 
 .nav {
-  // Hacemos la barra sticky, siempre visible arriba
   position: sticky;
   top: 0;
   z-index: 100;
 
-  // Fondo semitransparente con blur (efecto glass nocturno)
   backdrop-filter: blur(18px);
   background: linear-gradient(
     to bottom,
@@ -71,17 +146,14 @@ main {
     rgba(2, 6, 18, 0.8)
   );
 
-  // Línea inferior sutil para separar del contenido
   border-bottom: 1px solid rgba(159, 179, 170, 0.25);
 
-  // Layout horizontal: logo | menú | CTA
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   padding: 0.9rem 1.5rem;
 
-  // Logo (texto de marca "PaleoCam")
   &__logo {
     font-family: $ff-font-heading;
     font-weight: 700;
@@ -90,7 +162,6 @@ main {
     color: $ff-color-text;
   }
 
-  // Lista de enlaces (Funciones / Planes / Testimonios)
   &__menu {
     list-style: none;
     display: flex;
@@ -99,14 +170,16 @@ main {
     padding: 0;
   }
 
-  // Enlaces de navegación
+  &__item {
+    // hook para estado activo si lo necesitas
+  }
+
   &__enlace {
     font-size: 0.95rem;
     color: $ff-color-muted;
     position: relative;
     padding-block: 0.25rem;
 
-    // Subrayado animado en hover (como rayo de sensor)
     &::after {
       content: "";
       position: absolute;
@@ -128,13 +201,11 @@ main {
     }
   }
 
-  // Botón de llamada a la acción en la nav (usa .boton que definirás después)
   &__cta {
     font-size: 0.9rem;
     padding-inline: 1.4rem;
     box-shadow: $ff-shadow-soft;
 
-    // En pantallas pequeñas podrías ocultarlo si quieres
     @media (max-width: 768px) {
       display: none;
     }
@@ -146,7 +217,6 @@ main {
 // =========================
 
 .hero {
-  // layout en dos columnas: texto | visual
   padding-block: $ff-space-lg;
   padding-inline: $ff-space-md;
   display: grid;
@@ -154,7 +224,6 @@ main {
   gap: $ff-space-lg;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
 
-  // Contenido de texto
   &__contenido {
     max-width: 540px;
   }
@@ -168,7 +237,7 @@ main {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.09em;
-    background-color: $ff-color-primary-soft; // pill con color de marca
+    background-color: $ff-color-primary-soft;
     color: $ff-color-primary;
   }
 
@@ -198,7 +267,6 @@ main {
     color: $ff-color-muted;
   }
 
-  // Panel visual (mockup de cámara trampa)
   &__visual {
     min-height: 260px;
     border-radius: $ff-radius-md;
@@ -216,37 +284,34 @@ main {
     overflow: hidden;
   }
 
-  // Imagen del dinosaurio dentro del panel
   &__imagen {
     width: 100%;
     height: 100%;
-    object-fit: cover; // rellena el panel sin deformar
-    filter: grayscale(10%); // leve desaturación para look más técnico
+    object-fit: cover;
+    filter: grayscale(10%);
   }
 
-  // HUD de la cámara (REC y tiempo)
   &__hud {
     position: absolute;
     top: 0.8rem;
-    font-size: 0.85rem;          // un poco más grande
-    letter-spacing: 0.14em;      // más separación = más legible
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    font-weight: 600;            // más grosor
-    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9); // halo oscuro para separarlo del fondo
-    z-index: 3;                  // por encima del ruido
+    font-weight: 600;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9);
+    z-index: 3;
   }
 
   &__hud--rec {
     left: 0.9rem;
-    color: #ff4d4d;              // rojo más vivo tipo indicador REC
+    color: #ff4d4d;
   }
 
   &__hud--time {
     right: 0.9rem;
-    color: #ffffff;              // blanco puro para máximo contraste
+    color: #ffffff;
   }
 
-  // Capa de ruido tipo VHS (líneas horizontales animadas)
   &__visual::after {
     content: "";
     position: absolute;
@@ -259,18 +324,17 @@ main {
       transparent 1px,
       transparent 3px
     );
-    opacity: 0.9; // déjalo alto para probar; luego puedes bajarlo
-    mix-blend-mode: normal; // prueba; luego puedes usar soft-light
-    z-index: 1; // por encima de la imagen, por debajo del HUD
+    opacity: 0.9;
+    mix-blend-mode: normal;
+    z-index: 1;
     animation: vhs-noise 0.6s linear infinite;
   }
 
-  // Responsive: hero en una sola columna en móviles
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
 
     &__visual {
-      order: -1; // visual arriba en mobile
+      order: -1;
     }
   }
 }
@@ -290,14 +354,9 @@ main {
 // =========================
 
 .features {
-  // espacio vertical arriba/abajo usando variable
   padding-block: $ff-space-lg;
-
-  // líneas de separación para dividir visualmente secciones
   border-top: 1px solid rgba(159, 179, 170, 0.18);
   border-bottom: 1px solid rgba(159, 179, 170, 0.18);
-
-  // fondo con gradientes suaves (sensores en la selva)
   background:
     radial-gradient(circle at top left, rgba(74, 124, 109, 0.25), transparent),
     radial-gradient(
@@ -306,28 +365,24 @@ main {
       transparent
     );
 
-  // Título principal de la sección
   &__titulo {
     font-family: $ff-font-heading;
     font-size: 1.6rem;
     text-align: center;
     margin-bottom: 0.4rem;
-    color: $ff-color-text; // buen contraste en fondo oscuro
+    color: $ff-color-text;
   }
 
-  // Subtítulo
   &__subtitulo {
     text-align: center;
-    color: $ff-color-muted; // un poco más apagado que el título
+    color: $ff-color-muted;
     margin-bottom: $ff-space-md;
   }
 
-  // Grid que contiene las tarjetas .feature
   &__grid {
     display: grid;
-    // auto-fit + minmax → se adapta solo a mobile / desktop
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: $ff-space-md; // separación entre tarjetas
+    gap: $ff-space-md;
   }
 }
 
@@ -336,23 +391,22 @@ main {
 // =========================
 
 .feature {
-  background-color: $ff-color-surface-alt; // fondo de tarjeta
-  border-radius: $ff-radius-md; // esquinas redondeadas
-  padding: $ff-space-md; // espacio interno
-  border: 1px solid rgba(159, 179, 170, 0.25); // borde sutil
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); // sombra para levantar la tarjeta
+  background-color: $ff-color-surface-alt;
+  border-radius: $ff-radius-md;
+  padding: $ff-space-md;
+  border: 1px solid rgba(159, 179, 170, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 
   display: flex;
   flex-direction: column;
-  gap: $ff-space-sm; // separación entre icono, título y texto
+  gap: $ff-space-sm;
   position: relative;
   overflow: hidden;
 
-  // Icono / número circular (1, 2, 3, 4...)
   &__icono {
     width: 2rem;
     height: 2rem;
-    border-radius: $ff-radius-full; // círculo perfecto
+    border-radius: $ff-radius-full;
 
     display: inline-flex;
     align-items: center;
@@ -361,28 +415,273 @@ main {
     font-size: 0.9rem;
     font-weight: 600;
 
-    background: $ff-color-primary-soft; // fondo suave del número
-    color: $ff-color-primary; // número con color de marca
+    background: $ff-color-primary-soft;
+    color: $ff-color-primary;
   }
 
-  // Título de cada feature
   &__titulo {
     font-size: 1.05rem;
     font-weight: 600;
-    color: $ff-color-text; // texto claro para buen contraste
+    color: $ff-color-text;
   }
 
-  // Descripción de cada feature
   &__texto {
-    color: $ff-color-muted; // tono más suave, para cuerpo del texto
+    color: $ff-color-muted;
     font-size: 0.95rem;
   }
 
-  // Estado hover de la tarjeta completa
   &:hover {
-    border-color: $ff-color-primary; // resalta borde con color de marca
-    transform: translateY(-2px); // leve “lift” hacia arriba
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9); // sombra más fuerte
+    border-color: $ff-color-primary;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
     transition: all 150ms ease;
+  }
+}
+
+// =========================
+// SECCIÓN PRECIOS
+// =========================
+
+.precios {
+  padding-block: $ff-space-lg;
+  padding-inline: $ff-space-md;
+  background-color: $ff-color-surface;
+
+  &__titulo {
+    font-family: $ff-font-heading;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: $ff-space-md;
+  }
+
+  &__grid {
+    max-width: $ff-max-width;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: $ff-space-md;
+  }
+}
+
+.plan {
+  background-color: $ff-color-surface-alt;
+  border-radius: $ff-radius-md;
+  padding: $ff-space-md;
+  border: 1px solid rgba(159, 179, 170, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: $ff-space-sm;
+
+  &__nombre {
+    font-family: $ff-font-heading;
+    font-size: 1.1rem;
+  }
+
+  &__precio {
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    .plan__periodo {
+      font-size: 0.9rem;
+      color: $ff-color-muted;
+      margin-left: 0.15rem;
+    }
+  }
+
+  &__lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 $ff-space-sm 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__item {
+    color: $ff-color-muted;
+    font-size: 0.95rem;
+  }
+
+  &__boton {
+    align-self: flex-start;
+  }
+
+  &--destacado {
+    background:
+      radial-gradient(circle at top left, rgba(74, 124, 109, 0.3), transparent),
+      $ff-color-surface-alt;
+    border-color: $ff-color-primary;
+    position: relative;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+    transform: translateY(-4px);
+
+    .plan__etiqueta {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: $ff-radius-full;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background-color: $ff-color-primary-soft;
+      color: $ff-color-primary;
+    }
+  }
+}
+
+// =========================
+// SECCIÓN OPINIONES
+// =========================
+
+.opiniones {
+  padding-block: $ff-space-lg;
+  padding-inline: $ff-space-md;
+
+  &__titulo {
+    font-family: $ff-font-heading;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: $ff-space-md;
+  }
+
+  &__grid {
+    max-width: $ff-max-width;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: $ff-space-md;
+  }
+}
+
+.testimonio {
+  background-color: $ff-color-surface-alt;
+  border-radius: $ff-radius-md;
+  padding: $ff-space-md;
+  border: 1px solid rgba(159, 179, 170, 0.25);
+
+  &__texto {
+    font-style: italic;
+    margin-bottom: $ff-space-sm;
+  }
+
+  &__autor {
+    font-size: 0.95rem;
+    color: $ff-color-muted;
+  }
+}
+
+// =========================
+// SECCIÓN CTA
+// =========================
+
+.cta {
+  padding-block: $ff-space-lg;
+  padding-inline: $ff-space-md;
+  background: linear-gradient(135deg, #07141b, #0b1f26);
+
+  text-align: center;
+
+  &__titulo {
+    font-family: $ff-font-heading;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__texto {
+    color: $ff-color-muted;
+    margin-bottom: $ff-space-sm;
+  }
+}
+
+// =========================
+// SECCIÓN INTEGRACIONES
+// =========================
+
+.integraciones {
+  padding-block: $ff-space-lg;
+  padding-inline: $ff-space-md;
+  background-color: $ff-color-surface;
+
+  &__titulo {
+    font-family: $ff-font-heading;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+
+  &__subtitulo {
+    text-align: center;
+    color: $ff-color-muted;
+    margin-bottom: $ff-space-md;
+  }
+
+  &__grid {
+    max-width: $ff-max-width;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: $ff-space-md;
+  }
+}
+
+.integracion {
+  background-color: $ff-color-surface-alt;
+  border-radius: $ff-radius-md;
+  padding: $ff-space-md;
+  border: 1px solid rgba(159, 179, 170, 0.25);
+
+  &__titulo {
+    font-family: $ff-font-heading;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  &__texto {
+    color: $ff-color-muted;
+    font-size: 0.95rem;
+  }
+}
+
+// =========================
+// FOOTER
+// =========================
+
+.footer {
+  padding-block: $ff-space-md;
+  padding-inline: $ff-space-md;
+  border-top: 1px solid rgba(159, 179, 170, 0.25);
+  background-color: #020815;
+  font-size: 0.9rem;
+
+  &__cols {
+    max-width: $ff-max-width;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: $ff-space-md;
+    margin-bottom: $ff-space-sm;
+  }
+
+  &__titulo {
+    font-family: $ff-font-heading;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  &__enlace {
+    display: block;
+    color: $ff-color-muted;
+    margin-bottom: 0.2rem;
+
+    &:hover {
+      color: $ff-color-text;
+    }
+  }
+
+  &__copy {
+    max-width: $ff-max-width;
+    margin-inline: auto;
+    text-align: center;
+    color: $ff-color-muted;
   }
 }
